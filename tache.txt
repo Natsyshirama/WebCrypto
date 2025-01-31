@@ -1,0 +1,14 @@
+creation table : fond_user /mvt_retrait_fond
+insertion des donner
+Back office :
+creation :
+-jsp affiches liste_retrait non valider
+-jsp validation
+
+docker run -d --name laravel_mysql --network host -e MYSQL_ROOT_PASSWORD=laravelpassword mysql:8.0
+
+java -cp ".;../lib/mysql-connector-j-9.0.0.jar" database.DBConnexion
+cd ../../model
+cd ../../controller/fondController;
+C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\Crypto\WEB-INF\classes\model\fond>javac -cp "../../../lib/jakarta.servlet-api-6.0.0.jar;../../../../WEB-INF/classes/" *.java
+C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\Crypto\WEB-INF\classes\controller\fondController>javac -cp "../../../lib/jakarta.servlet-api-6.0.0.jar;../../../../WEB-INF/classes/" *.java
