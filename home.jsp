@@ -24,6 +24,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="fond/depot" class="menu-link">
+                        <i class="fas fa-money-bill-transfer"></i> Liste des Depots(Back)
+                    </a>
+                </li>
+                <li>
                     <a href="fond/formInsert" class="menu-link">
                         <i class="fas fa-plus-circle"></i> Nouveau retrait(Front)
                     </a>

@@ -17,8 +17,6 @@
         <servlet-name>RetraitServlet</servlet-name>
         <servlet-class>controller.fondController.RetraitServlet</servlet-class>
     </servlet>
-
-
     <servlet-mapping>
         <servlet-name>RetraitServlet</servlet-name>
         <url-pattern>/fond/retrait</url-pattern>
@@ -26,6 +24,20 @@
     <servlet-mapping>
         <servlet-name>RetraitServlet</servlet-name>
         <url-pattern>/fond/valideRetrait</url-pattern>
+    </servlet-mapping>
+
+
+ <servlet>
+        <servlet-name>DepotServlet</servlet-name>
+        <servlet-class>controller.fondController.DepotServlet</servlet-class>
+</servlet>
+     <servlet-mapping>
+        <servlet-name>DepotServlet</servlet-name>
+        <url-pattern>/fond/depot</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DepotServlet</servlet-name>
+        <url-pattern>/fond/valideDepot</url-pattern>
     </servlet-mapping>
 
 

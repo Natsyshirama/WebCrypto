@@ -30,11 +30,28 @@ CREATE TABLE mvt_retrait_fond(
    FOREIGN KEY(Id_utilisateur) REFERENCES user(id)
 );
 
+
+CREATE TABLE mvt_depot_fond(
+   Id_depot INT AUTO_INCREMENT,
+   solde DECIMAL(15,2)  ,
+   daty DATETIME,
+   etat BOOLEAN,
+   Id_utilisateur BIGINT UNSIGNED NOT NULL,
+   PRIMARY KEY(Id_depot),
+   FOREIGN KEY(Id_utilisateur) REFERENCES user(id)
+);
+
+
+
 ALTER TABLE mvt_retrait_fond
+MODIFY COLUMN daty TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+
+
+ALTER TABLE mvt_depot_fond
 MODIFY COLUMN daty TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 
 INSERT INTO fond_user (solde, Id_utilisateur) 
 VALUES ('100000', 1); 
 
-INSERT INTO mvt_retrait_fond (solde, etat, Id_utilisateur)
+INSERT INTO mvt_depot_fond (solde, etat, Id_utilisateur)
 VALUES (10000, 0, 1); 
