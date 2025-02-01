@@ -55,11 +55,27 @@
         <url-pattern>/fond/formInsert</url-pattern>
     </servlet-mapping>
 
+
+
+<servlet>
+        <servlet-name>InsertDepotServlet</servlet-name>
+        <servlet-class>controller.fondController.InsertDepotServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertDepotServlet</servlet-name>
+        <url-pattern>/fond/formInsertDepot</url-pattern>
+    </servlet-mapping>
+ <servlet-mapping>
+        <servlet-name>InsertDepotServlet</servlet-name>
+        <url-pattern>/fond/insertDepot</url-pattern>
+    </servlet-mapping>
+
+
+
 <servlet>
         <servlet-name>ProfilServlet</servlet-name>
         <servlet-class>controller.userController.ProfilServlet</servlet-class>
 </servlet>
-
 <servlet-mapping>
         <servlet-name>ProfilServlet</servlet-name>
         <url-pattern>/profil</url-pattern>

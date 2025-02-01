@@ -5,7 +5,7 @@
 
         <head>
             <title>Profil Utilisateur</title>
-            <link rel="stylesheet" href="styles.css">
+            <link rel="stylesheet" href="Styles/styles.css">
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
         </head>
 

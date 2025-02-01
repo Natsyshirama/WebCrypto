@@ -69,4 +69,47 @@ public void validerDepot(int idDepot){
         e.printStackTrace();
     }
 }
+
+
+public BigDecimal getSoldeUser(long idUtilisateur) {
+    String sql = "SELECT solde FROM fond_user WHERE Id_utilisateur = ?";
+    BigDecimal solde = BigDecimal.ZERO;
+
+    try (Connection conn = DBConnexion.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setLong(1, idUtilisateur);
+
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                solde = rs.getBigDecimal("solde");
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return solde;
+}
+
+public void insertDepot(DepotFond depot) throws Exception {
+    String insertDepotSQL = "INSERT INTO mvt_depot_fond (solde, daty, etat, Id_utilisateur) VALUES (?, current_timestamp(), ?, ?)";
+    
+    try (Connection conn = DBConnexion.getConnection();
+         PreparedStatement insertStmt = conn.prepareStatement(insertDepotSQL)) {
+        
+        conn.setAutoCommit(false);  // Démarrer une transaction
+
+            insertStmt.setBigDecimal(1, depot.getSolde());
+            insertStmt.setInt(2, depot.getEtat());
+            insertStmt.setLong(3, depot.getIdUtilisateur());
+            insertStmt.executeUpdate();
+        
+        conn.commit();  // Valider la transaction
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        throw new Exception("Erreur lors de l'insertion du depot : " + e.getMessage());
+    }
+}
 }

@@ -33,6 +33,11 @@
                         <i class="fas fa-plus-circle"></i> Nouveau retrait(Front)
                     </a>
                 </li>
+                <li>
+                    <a href="fond/formInsertDepot" class="menu-link">
+                        <i class="fas fa-plus-circle"></i> Nouveau Depot(Front)
+                    </a>
+                </li>
             </ul>
 
             <footer class="crypto-footer">
