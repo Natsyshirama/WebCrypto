@@ -2,6 +2,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+          <listener>
+        <listener-class>controller.listener.AppContextListener</listener-class>
+    </listener>
 
    <servlet>
         <servlet-name>Login</servlet-name>
@@ -71,6 +74,59 @@
     </servlet-mapping>
 
 
+
+<servlet>
+        <servlet-name>AchatCryptoServlet</servlet-name>
+        <servlet-class>controller.cryptoController.AchatCryptoServlet</servlet-class>
+    </servlet>
+<servlet-mapping>
+        <servlet-name>AchatCryptoServlet</servlet-name>
+        <url-pattern>/crypto/formAchatCrypto</url-pattern>
+    </servlet-mapping>
+<servlet-mapping>
+        <servlet-name>AchatCryptoServlet</servlet-name>
+        <url-pattern>/crypto/achatCrypto</url-pattern>
+    </servlet-mapping>
+
+
+
+<servlet>
+        <servlet-name>VendreCryptoServlet</servlet-name>
+        <servlet-class>controller.cryptoController.VendreCryptoServlet</servlet-class>
+    </servlet>
+
+<servlet-mapping>
+        <servlet-name>VendreCryptoServlet</servlet-name>
+        <url-pattern>/crypto/formVenteCrypto</url-pattern>
+    </servlet-mapping>
+<servlet-mapping>
+        <servlet-name>VendreCryptoServlet</servlet-name>
+        <url-pattern>/crypto/vendreCrypto</url-pattern>
+    </servlet-mapping>
+
+
+
+ <servlet>
+        <servlet-name>CoursHistoriqueServlet</servlet-name>
+        <servlet-class>controller.cryptoController.CoursHistoriqueServlet</servlet-class>
+    </servlet>
+
+    <!-- Mapping de la servlet -->
+    <servlet-mapping>
+        <servlet-name>CoursHistoriqueServlet</servlet-name>
+        <url-pattern>/api/coursHistorique</url-pattern>
+    </servlet-mapping>
+
+ <servlet>
+        <servlet-name>CryptoServlet</servlet-name>
+        <servlet-class>controller.cryptoController.CryptoListServlet</servlet-class>
+    </servlet>
+
+    <!-- Mapping de la servlet -->
+    <servlet-mapping>
+        <servlet-name>CryptoServlet</servlet-name>
+        <url-pattern>/api/cryptoList</url-pattern>
+    </servlet-mapping>
 
 <servlet>
         <servlet-name>ProfilServlet</servlet-name>

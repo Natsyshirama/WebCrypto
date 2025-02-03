@@ -12,3 +12,8 @@ cd ../../model
 cd ../../controller/fondController;
 C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\Crypto\WEB-INF\classes\model\fond>javac -cp "../../../lib/jakarta.servlet-api-6.0.0.jar;../../../../WEB-INF/classes/" *.java
 C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\Crypto\WEB-INF\classes\controller\fondController>javac -cp "../../../lib/jakarta.servlet-api-6.0.0.jar;../../../../WEB-INF/classes/" *.java
+
+
+//modifiaction structure base (insertion dans crypto_user ) et le selection dans le table crypto_user
+
+//
