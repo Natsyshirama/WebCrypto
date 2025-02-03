@@ -19,11 +19,6 @@
 
             <ul class="crypto-menu">
                 <li>
-                    <a href="graphique.jsp" class="menu-link">
-                        <i class="fas fa-money-bill-transfer"></i>evolution
-                    </a>
-                </li>
-                <li>
                     <a href="fond/retrait" class="menu-link">
                         <i class="fas fa-money-bill-transfer"></i> Liste des retraits(Back)
                     </a>
@@ -52,6 +47,11 @@
                 <li>
                     <a href="crypto/formVenteCrypto" class="menu-link">
                         <i class="fas fa-plus-circle"></i> Vente crypto
+                    </a>
+                </li>
+                <li>
+                    <a href="crypto/achatListe" class="menu-link">
+                        <i class="fas fa-plus-circle"></i> liste achat crypto
                     </a>
                 </li>
             </ul>

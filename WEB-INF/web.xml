@@ -91,6 +91,17 @@
 
 
 <servlet>
+        <servlet-name>AchatListe</servlet-name>
+        <servlet-class>controller.cryptoController.AchatListeServlet</servlet-class>
+    </servlet>
+    
+<servlet-mapping>
+        <servlet-name>AchatListe</servlet-name>
+        <url-pattern>/crypto/achatListe</url-pattern>
+    </servlet-mapping>
+
+
+<servlet>
         <servlet-name>VendreCryptoServlet</servlet-name>
         <servlet-class>controller.cryptoController.VendreCryptoServlet</servlet-class>
     </servlet>
