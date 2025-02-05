@@ -113,6 +113,15 @@
     </servlet-mapping>
 
 
+<servlet>
+        <servlet-name>AnalyseCrypto</servlet-name>
+        <servlet-class>controller.cryptoController.AnalyseCoursServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+        <servlet-name>AnalyseCrypto</servlet-name>
+        <url-pattern>/crypto/analyseCrypto</url-pattern>
+    </servlet-mapping>
+
 
 <servlet>
         <servlet-name>VendreCryptoServlet</servlet-name>

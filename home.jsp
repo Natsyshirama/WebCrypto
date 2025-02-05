@@ -59,6 +59,11 @@
                         <i class="fas fa-plus-circle"></i> liste vente crypto
                     </a>
                 </li>
+                <li>
+                    <a href="crypto/analyseCrypto" class="menu-link">
+                        <i class="fas fa-plus-circle"></i>AnalyseCrypto
+                    </a>
+                </li>
             </ul>
 
             <footer class="crypto-footer">
