@@ -54,7 +54,7 @@
             <body>
                 <h1>Analyse des Utilisateurs</h1>
 
-                <form method="get" action="AnalyseUserServlet">
+                <form method="get" action="analyseUser">
                     <label for="dateMax">Date et heure max :</label>
                     <input type="datetime-local" id="dateMax" name="dateMax" value="${param.dateMax}">
                     <button type="submit">Filtrer</button>
