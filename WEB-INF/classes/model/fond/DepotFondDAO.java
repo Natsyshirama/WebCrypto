@@ -57,15 +57,12 @@ public void validerDepot(int idDepot){
 
             int rowsUpdated = stmtUpdateFondUser.executeUpdate();
             
-            if (rowsUpdated > 0) {
                 // Validation du retrait si le solde a été mis à jour
                 stmtUpdateDepot.setInt(1, idDepot);
                 stmtUpdateDepot.executeUpdate();
-            } 
-        } else {
-            System.out.println("Depot introuvable.");
-        }
-    }catch (Exception e) {
+          
+   }
+   } catch (Exception e) {
         e.printStackTrace();
     }
 }
