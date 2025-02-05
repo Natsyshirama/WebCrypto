@@ -11,44 +11,66 @@
         </head>
 
         <body>
-            <h1>Liste des Achats Crypto</h1>
+            <header>
+                <h1>Plateforme Crypto</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#market">Marché</a></li>
+                        <li><a href="#wallet">Portefeuille</a></li>
+                        <li><a href="#trade">Achat/Vente</a></li>
+                        <li><a href="logout">Déconnexion</a></li>
+                    </ul>
+                </nav>
+            </header>
 
-            <form action="achatListe" method="get">
-                <label for="dateDebut">Date de début :</label>
-                <input type="date" id="dateDebut" name="dateDebut">
-                <label for="dateFin">Date de fin :</label>
-                <input type="date" id="dateFin" name="dateFin">
-                <button type="submit">Filtrer</button>
-            </form>
+            <section id="achat-liste">
+                <h1>Liste des Achats Crypto</h1>
 
-            <c:if test="${not empty error}">
-                <p style="color: red;">${error}</p>
-            </c:if>
+                <form action="achatListe" method="get" class="filter-form">
+                    <div class="form-group">
+                        <label for="dateDebut">Date de début :</label>
+                        <input type="date" id="dateDebut" name="dateDebut">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateFin">Date de fin :</label>
+                        <input type="date" id="dateFin" name="dateFin">
+                    </div>
+                    <button type="submit" class="btn-submit">Filtrer</button>
+                </form>
 
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>ID Achat</th>
-                        <th>Nb Crypto</th>
-                        <th>Cours</th>
-                        <th>Date</th>
-                        <th>ID Cryptomonnaie</th>
-                        <th>ID Utilisateur</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="achat" items="${achats}">
+                <c:if test="${not empty error}">
+                    <p class="error-message">${error}</p>
+                </c:if>
+
+                <table class="retrait-table">
+                    <thead>
                         <tr>
-                            <td>${achat.idAchat}</td>
-                            <td>${achat.nbCrypto}</td>
-                            <td>${achat.cours}</td>
-                            <td>${achat.daty}</td>
-                            <td>${achat.idCryptomonnaie}</td>
-                            <td>${achat.idUtilisateur}</td>
+                            <th>ID Achat</th>
+                            <th>Nb Crypto</th>
+                            <th>Cours</th>
+                            <th>Date</th>
+                            <th>ID Cryptomonnaie</th>
+                            <th>ID Utilisateur</th>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="achat" items="${achats}">
+                            <tr>
+                                <td>${achat.idAchat}</td>
+                                <td>${achat.nbCrypto}</td>
+                                <td>${achat.cours}</td>
+                                <td>${achat.daty}</td>
+                                <td>${achat.idCryptomonnaie}</td>
+                                <td>${achat.idUtilisateur}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </section>
+
+            <footer>
+                <p>© 2023 Plateforme Crypto. Tous droits réservés.</p>
+            </footer>
         </body>
 
         </html>

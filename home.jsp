@@ -13,63 +13,68 @@
     <body>
         <div class="container">
             <header class="crypto-header">
-                <h1> Retraits</h1>
+                <h1>Retraits et Gestion Crypto</h1>
             </header>
-            <li><a href="profil">Profil</a></li>
 
-            <ul class="crypto-menu">
-                <li>
-                    <a href="fond/retrait" class="menu-link">
-                        <i class="fas fa-money-bill-transfer"></i> Liste des retraits(Back)
-                    </a>
-                </li>
-                <li>
-                    <a href="fond/depot" class="menu-link">
-                        <i class="fas fa-money-bill-transfer"></i> Liste des Depots(Back)
-                    </a>
-                </li>
-                <li>
-                    <a href="fond/formInsert" class="menu-link">
-                        <i class="fas fa-plus-circle"></i> Nouveau retrait(Front)
-                    </a>
-                </li>
-                <li>
-                    <a href="fond/formInsertDepot" class="menu-link">
-                        <i class="fas fa-plus-circle"></i> Nouveau Depot(Front)
-                    </a>
-                </li>
-
-                <li>
-                    <a href="crypto/formAchatCrypto" class="menu-link">
-                        <i class="fas fa-plus-circle"></i> Achat crypto
-                    </a>
-                </li>
-                <li>
-                    <a href="crypto/formVenteCrypto" class="menu-link">
-                        <i class="fas fa-plus-circle"></i> Vente crypto
-                    </a>
-                </li>
-                <li>
-                    <a href="crypto/achatListe" class="menu-link">
-                        <i class="fas fa-plus-circle"></i> liste achat crypto
-                    </a>
-                </li>
-                <li>
-                    <a href="crypto/venteListe" class="menu-link">
-                        <i class="fas fa-plus-circle"></i> liste vente crypto
-                    </a>
-                </li>
-                <li>
-                    <a href="crypto/analyseCrypto" class="menu-link">
-                        <i class="fas fa-plus-circle"></i>AnalyseCrypto
-                    </a>
-                </li>
-                <li>
-                    <a href="crypto/analyseUser.jsp" class="menu-link">
-                        <i class="fas fa-plus-circle"></i>AnalyseUser
-                    </a>
-                </li>
-            </ul>
+            <nav>
+                <ul class="crypto-menu">
+                    <li>
+                        <a href="profil" class="menu-link">
+                            <i class="fas fa-user"></i> Profil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fond/retrait" class="menu-link">
+                            <i class="fas fa-money-bill-transfer"></i> Liste des Retraits
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fond/depot" class="menu-link">
+                            <i class="fas fa-money-bill-wave"></i> Liste des Dépôts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fond/formInsert" class="menu-link">
+                            <i class="fas fa-plus-circle"></i> Nouveau Retrait
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fond/formInsertDepot" class="menu-link">
+                            <i class="fas fa-plus-circle"></i> Nouveau Dépôt
+                        </a>
+                    </li>
+                    <li>
+                        <a href="crypto/formAchatCrypto" class="menu-link">
+                            <i class="fas fa-plus-circle"></i> Achat Crypto
+                        </a>
+                    </li>
+                    <li>
+                        <a href="crypto/formVenteCrypto" class="menu-link">
+                            <i class="fas fa-plus-circle"></i> Vente Crypto
+                        </a>
+                    </li>
+                    <li>
+                        <a href="crypto/achatListe" class="menu-link">
+                            <i class="fas fa-list-alt"></i> Liste Achat Crypto
+                        </a>
+                    </li>
+                    <li>
+                        <a href="crypto/venteListe" class="menu-link">
+                            <i class="fas fa-list-alt"></i> Liste Vente Crypto
+                        </a>
+                    </li>
+                    <li>
+                        <a href="crypto/analyseCrypto" class="menu-link">
+                            <i class="fas fa-chart-line"></i> Analyse Crypto
+                        </a>
+                    </li>
+                    <li>
+                        <a href="crypto/analyseUser.jsp" class="menu-link">
+                            <i class="fas fa-chart-pie"></i> Analyse Utilisateur
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
             <footer class="crypto-footer">
                 © 2025 Plateforme Crypto. Tous droits réservés.
