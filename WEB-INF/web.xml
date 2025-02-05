@@ -101,6 +101,19 @@
     </servlet-mapping>
 
 
+
+<servlet>
+        <servlet-name>VenteListe</servlet-name>
+        <servlet-class>controller.cryptoController.VenteListeServlet</servlet-class>
+    </servlet>
+
+<servlet-mapping>
+        <servlet-name>VenteListe</servlet-name>
+        <url-pattern>/crypto/venteListe</url-pattern>
+    </servlet-mapping>
+
+
+
 <servlet>
         <servlet-name>VendreCryptoServlet</servlet-name>
         <servlet-class>controller.cryptoController.VendreCryptoServlet</servlet-class>

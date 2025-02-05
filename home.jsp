@@ -54,6 +54,11 @@
                         <i class="fas fa-plus-circle"></i> liste achat crypto
                     </a>
                 </li>
+                <li>
+                    <a href="crypto/venteListe" class="menu-link">
+                        <i class="fas fa-plus-circle"></i> liste vente crypto
+                    </a>
+                </li>
             </ul>
 
             <footer class="crypto-footer">
