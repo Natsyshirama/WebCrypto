@@ -64,6 +64,11 @@
                         <i class="fas fa-plus-circle"></i>AnalyseCrypto
                     </a>
                 </li>
+                <li>
+                    <a href="crypto/analyseUser.jsp" class="menu-link">
+                        <i class="fas fa-plus-circle"></i>AnalyseUser
+                    </a>
+                </li>
             </ul>
 
             <footer class="crypto-footer">

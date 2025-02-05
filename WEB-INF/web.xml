@@ -123,6 +123,17 @@
     </servlet-mapping>
 
 
+
+<servlet>
+        <servlet-name>AnalyseUser</servlet-name>
+        <servlet-class>controller.cryptoController.AnalyseUserServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+        <servlet-name>AnalyseUser</servlet-name>
+        <url-pattern>/crypto/analyseUser</url-pattern>
+    </servlet-mapping>
+
+
 <servlet>
         <servlet-name>VendreCryptoServlet</servlet-name>
         <servlet-class>controller.cryptoController.VendreCryptoServlet</servlet-class>
