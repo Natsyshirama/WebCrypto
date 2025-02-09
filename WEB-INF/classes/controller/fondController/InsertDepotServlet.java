@@ -14,21 +14,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 public class InsertDepotServlet extends HttpServlet {
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     try {
-
-        long idUtilisateur = SessionUtil.getUserIdConnected(request);
-        DepotFondDAO dao = new DepotFondDAO();
-
-        BigDecimal solde = dao.getSoldeUser(idUtilisateur);
-        request.setAttribute("solde", solde);
-        request.getRequestDispatcher("insertDepot.jsp").forward(request, response);
- } catch (Exception e) {
-        response.sendRedirect("../../../../login.jsp");
-    }
-  }
-
+http://localhost:8080/Crypto/fond/formInsertDepot
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     try {

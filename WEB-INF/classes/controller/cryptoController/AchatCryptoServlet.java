@@ -1,7 +1,7 @@
 package controller.cryptoController;
 
 import model.crypto.Crypto;
-import model.crypto.CryptoDAO; 
+import model.crypto.CryptoDAO;
 import model.fond.DepotFondDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.math.BigDecimal;
 
 public class AchatCryptoServlet extends HttpServlet {
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
