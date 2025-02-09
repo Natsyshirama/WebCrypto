@@ -2,22 +2,19 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import { getFirestore, collection, addDoc, doc, runTransaction, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// Configuration Firebase corrigée
 const firebaseConfig = {
     apiKey: "AIzaSyDwfQNfgWkGWpd0Fjib_VHRXuk75m51zds",
     authDomain: "cryptos-d4f6b.firebaseapp.com",
     projectId: "cryptos-d4f6b",
-    storageBucket: "cryptos-d4f6b.appspot.com",  // Correction ici
+    storageBucket: "cryptos-d4f6b.appspot.com",  
     messagingSenderId: "938286766542",
     appId: "1:938286766542:web:6240cb83b29ecd697cb39f",
     measurementId: "G-QHQLP3ZNDY"
 };
 
-// Initialisation Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Fonction pour obtenir le prochain ID unique
 async function getNextId(counterName) {
     const counterRef = doc(db, "counters", counterName);
 
@@ -43,12 +40,11 @@ async function getNextId(counterName) {
     }
 }
 
-// Attendre que le DOM soit chargé avant d'attacher l'événement
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('vente-form');
 
     form.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Empêcher l'envoi automatique du formulaire
+        event.preventDefault();
 
         try {
             const formData = new FormData(form);
@@ -60,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error("❌ Données invalides : Assurez-vous que la quantité est un nombre valide.");
             }
 
-            // Obtenir le cours de la cryptomonnaie sélectionnée
             const selectedOption = form.querySelector(`option[value="${idCrypto}"]`);
             const coursActuel = parseFloat(selectedOption.dataset.cours);
 
@@ -68,25 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error("❌ Cours de la cryptomonnaie introuvable.");
             }
 
-            // Obtenir le prochain ID pour la vente
             const idVendre = await getNextId("ventes");
             console.log("📌 Nouvel ID de vente généré:", idVendre);
 
-            // Préparer les données pour Firebase
             const venteData = {
                 Id_Cryptomonaie: idCrypto,
                 Id_utilisateur: idUtilisateur,
                 Id_vendre: idVendre,
                 cours: coursActuel,
-                daty: serverTimestamp(), // Timestamp géré par Firebase
+                daty: serverTimestamp(), 
                 nb_crypto: nbCrypto
             };
 
-            // Insérer dans Firebase
             await addDoc(collection(db, "mvt_vendre_crypto"), venteData);
             console.log("✅ Vente enregistrée avec succès!");
 
-            // Soumettre le formulaire après insertion Firebase
             form.submit();
         } catch (error) {
             console.error("❌ Erreur lors de l'enregistrement:", error);

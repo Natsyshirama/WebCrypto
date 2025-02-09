@@ -7,7 +7,6 @@ public class Cryptoko {
     private BigDecimal quantite;
     private BigDecimal coursActuel;
 
-    // Constructeurs
     public Cryptoko() {}
 
     public Cryptoko(int idCrypto, String nom, BigDecimal quantite, BigDecimal coursActuel) {
@@ -17,7 +16,6 @@ public class Cryptoko {
         this.coursActuel = coursActuel;
     }
 
-    // Getters
     public int getIdCrypto() {
         return idCrypto;
     }
@@ -34,7 +32,6 @@ public class Cryptoko {
         return coursActuel;
     }
 
-    // Setters
     public void setIdCrypto(int idCrypto) {
         this.idCrypto = idCrypto;
     }

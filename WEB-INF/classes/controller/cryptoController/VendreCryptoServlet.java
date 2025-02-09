@@ -26,9 +26,7 @@ public class VendreCryptoServlet extends HttpServlet {
             CryptoDAO cryptoDAO = new CryptoDAO();
             DepotFondDAO dao = new DepotFondDAO();
 
-            // Liste des cryptos disponibles pour l'achat
 
-            // Liste des cryptos déjà possédées par l'utilisateur
             Long idUtilisateur = SessionUtil.getUserIdConnected(request);
             List<Crypto> cryptosUser = cryptoDAO.getUserCryptos(idUtilisateur);
             List<Cryptoko> myCryptos = cryptoDAO.getCryptosPossedees(idUtilisateur);
@@ -63,7 +61,7 @@ public class VendreCryptoServlet extends HttpServlet {
         request.setAttribute("message", "Erreur de vente: " + e.getMessage());
     }
     
-    doGet(request, response); // Recharge les données mises à jour
+    doGet(request, response); 
 }
 
 }

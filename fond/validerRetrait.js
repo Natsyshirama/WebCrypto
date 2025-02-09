@@ -1,8 +1,6 @@
-// Importer Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import { getFirestore, doc, updateDoc, getDoc, setDoc, runTransaction } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// Configuration Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDwfQNfgWkGWpd0Fjib_VHRXuk75m51zds",
     authDomain: "cryptos-d4f6b.firebaseapp.com",
@@ -13,18 +11,15 @@ const firebaseConfig = {
     measurementId: "G-QHQLP3ZNDY"
 };
 
-// Initialisation de Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Fonction pour valider un retrait
 async function validerRetrait(idRetrait, idUtilisateur, solde) {
     const retraitRef = doc(db, "mvt_retrait_fond", idRetrait);
     const fondUserRef = doc(db, "fond_user", idUtilisateur);
 
     try {
         await runTransaction(db, async (transaction) => {
-            // Lire d'abord le document fond_user
             const fondDoc = await transaction.get(fondUserRef);
             let nouveauSolde = parseFloat(solde);
 
@@ -35,7 +30,6 @@ async function validerRetrait(idRetrait, idUtilisateur, solde) {
                 transaction.set(fondUserRef, { idUtilisateur, solde: nouveauSolde });
             }
 
-            // Ensuite, mettre à jour l'état du dépôt
             transaction.update(retraitRef, { etat: true });
         });
 
@@ -47,7 +41,6 @@ async function validerRetrait(idRetrait, idUtilisateur, solde) {
     }
 }
 
-// Ajouter un écouteur sur les boutons de validation
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".btn-valider").forEach(button => {
         button.addEventListener("click", async (event) => {

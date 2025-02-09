@@ -1,8 +1,6 @@
-// Importer Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import { getFirestore, collection, addDoc, doc, runTransaction, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// Configuration Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDwfQNfgWkGWpd0Fjib_VHRXuk75m51zds",
     authDomain: "cryptos-d4f6b.firebaseapp.com",
@@ -13,11 +11,9 @@ const firebaseConfig = {
     measurementId: "G-QHQLP3ZNDY"
 };
 
-// Initialisation Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Fonction pour obtenir le prochain ID
 async function getNextId(counterName) {
     const counterRef = doc(db, "counters", counterName);
     
@@ -47,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('retrait-form');
     
     form.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Empêcher l'envoi automatique du formulaire
+        event.preventDefault(); 
 
         try {
             const formData = new FormData(form);
@@ -58,11 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error("Montant ou ID utilisateur invalide.");
             }
 
-            // Obtenir le prochain ID
             const retraitId = await getNextId("retraits");
             console.log("Nouvel ID de retrait généré:", retraitId);
 
-            // Préparer les données pour Firebase
             const retraitData = {
                 id: retraitId,
                 solde: montant,
@@ -72,11 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 type: "retrait"
             };
 
-            // Insérer dans Firebase
             await addDoc(collection(db, "mvt_retrait_fond"), retraitData);
             console.log("✅ Retrait enregistré dans Firebase avec succès!");
             
-            // Une fois l'insertion Firebase réussie, soumettre le formulaire
             form.submit();
         } catch (error) {
             console.error("❌ Erreur lors de l'enregistrement:", error);

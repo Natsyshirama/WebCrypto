@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-public class InsertRetraitServlet extends HttpServlet {// InsertRetraitServlet.java
+public class InsertRetraitServlet extends HttpServlet {
 
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     try {
@@ -49,6 +49,6 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         request.setAttribute("message", "Erreur : " + e.getMessage());
     }
     
-    doGet(request, response); // Recharge la page avec les nouvelles données
+    doGet(request, response); 
 }
 }

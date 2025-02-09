@@ -11,10 +11,8 @@ public class VenteCryptoDAO {
     public List<VenteCrypto> getVenteCryptoList(Timestamp dateDebut, Timestamp dateFin) throws Exception {
         List<VenteCrypto> ventes = new ArrayList<>();
 
-        // Si pas de fitre on prend le moi courant
         if (dateDebut == null || dateFin == null) {
             Calendar cal = Calendar.getInstance();
-            // Début du mois en cours
             cal.set(Calendar.DAY_OF_MONTH, 1);
             cal.set(Calendar.HOUR_OF_DAY, 0);
             cal.set(Calendar.MINUTE, 0);
@@ -22,7 +20,6 @@ public class VenteCryptoDAO {
             cal.set(Calendar.MILLISECOND, 0);
             dateDebut = new Timestamp(cal.getTimeInMillis());
 
-            // Fin du mois en cours = moi suivant fa -1
             cal.add(Calendar.MONTH, 1);
             cal.add(Calendar.MILLISECOND, -1);
             dateFin = new Timestamp(cal.getTimeInMillis());

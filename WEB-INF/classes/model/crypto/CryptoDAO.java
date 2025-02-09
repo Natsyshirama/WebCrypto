@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 
 public class CryptoDAO {
 
-    // Récupérer toutes les cryptomonnaies
     public List<Crypto> getAllCryptos() {
         List<Crypto> cryptos = new ArrayList<>();
         String sql = "SELECT Id_Cryptomonaie, nom, cours FROM Cryptomonaie";
@@ -55,7 +54,7 @@ public List<Crypto> getUserCryptos(long idUtilisateur) throws Exception {
         JOIN Cryptomonaie c ON cu.Id_Cryptomonaie = c.Id_Cryptomonaie
         WHERE cu.Id_utilisateur = ?
         GROUP BY c.Id_Cryptomonaie, c.nom, c.cours
-        """;  // La requête est modifiée pour regrouper les quantités possédées
+        """; 
 
     try (Connection conn = DBConnexion.getConnection();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -68,7 +67,7 @@ public List<Crypto> getUserCryptos(long idUtilisateur) throws Exception {
                 crypto.setId(rs.getInt("Id_Cryptomonaie"));
                 crypto.setNom(rs.getString("nom"));
                 crypto.setCours(rs.getBigDecimal("cours"));
-                crypto.setTotalCrypto(rs.getBigDecimal("total_crypto"));  // Utilisation de la somme des cryptos
+                crypto.setTotalCrypto(rs.getBigDecimal("total_crypto"));  
                 cryptos.add(crypto);
             }
         }
@@ -87,12 +86,10 @@ public void acheterCrypto(int idCrypto, long idUtilisateur, double quantite) thr
     try (Connection conn = DBConnexion.getConnection()) {
         conn.setAutoCommit(false);
 
-        // Vérification du solde utilisateur
         BigDecimal soldeUtilisateur;
         BigDecimal montantAchat;
         BigDecimal cours;
 
-        // Récupération du cours actuel de la cryptomonnaie
         String selectCoursSQL = "SELECT cours FROM Cryptomonaie WHERE Id_Cryptomonaie = ?";
         try (PreparedStatement stmtCours = conn.prepareStatement(selectCoursSQL)) {
             stmtCours.setInt(1, idCrypto);
@@ -106,7 +103,6 @@ public void acheterCrypto(int idCrypto, long idUtilisateur, double quantite) thr
 
         montantAchat = cours.multiply(BigDecimal.valueOf(quantite));
 
-        // Vérification du solde disponible
         try (PreparedStatement stmtFond = conn.prepareStatement(selectFondSQL)) {
             stmtFond.setLong(1, idUtilisateur);
             try (ResultSet rs = stmtFond.executeQuery()) {
@@ -121,7 +117,6 @@ public void acheterCrypto(int idCrypto, long idUtilisateur, double quantite) thr
             throw new Exception("Fonds insuffisants pour effectuer l'achat.");
         }
 
-        // Insertion dans `mvt_achat_crypto`
         try (PreparedStatement stmtAchat = conn.prepareStatement(insertAchatSQL)) {
             stmtAchat.setBigDecimal(1, BigDecimal.valueOf(quantite));
             stmtAchat.setBigDecimal(2, cours);
@@ -130,7 +125,6 @@ public void acheterCrypto(int idCrypto, long idUtilisateur, double quantite) thr
             stmtAchat.executeUpdate();
         }
 
-        // Mise à jour ou insertion dans `crypto_user`
         try (PreparedStatement stmtCryptoUser = conn.prepareStatement(updateCryptoUserSQL)) {
             stmtCryptoUser.setBigDecimal(1, BigDecimal.valueOf(quantite));
             stmtCryptoUser.setInt(2, idCrypto);
@@ -138,7 +132,6 @@ public void acheterCrypto(int idCrypto, long idUtilisateur, double quantite) thr
             stmtCryptoUser.executeUpdate();
         }
 
-        // Mise à jour du solde utilisateur
         try (PreparedStatement stmtFondUpdate = conn.prepareStatement(updateFondSQL)) {
             stmtFondUpdate.setBigDecimal(1, montantAchat);
             stmtFondUpdate.setLong(2, idUtilisateur);
@@ -203,7 +196,6 @@ public void vendreCrypto(int idCrypto, long idUtilisateur, double quantite) thro
     try (Connection conn = DBConnexion.getConnection()) {
         conn.setAutoCommit(false);
 
-        // 1. Vérification de la quantité disponible
         BigDecimal cryptoDisponible;
         try (PreparedStatement stmt = conn.prepareStatement(selectCryptoSQL)) {
             stmt.setInt(1, idCrypto);
@@ -218,7 +210,6 @@ public void vendreCrypto(int idCrypto, long idUtilisateur, double quantite) thro
             }
         }
 
-        // 2. Récupération du cours actuel
         BigDecimal cours;
         try (PreparedStatement stmt = conn.prepareStatement(selectCoursSQL)) {
             stmt.setInt(1, idCrypto);
@@ -227,10 +218,8 @@ public void vendreCrypto(int idCrypto, long idUtilisateur, double quantite) thro
             cours = rs.getBigDecimal("cours");
         }
 
-        // 3. Calcul du montant de la vente
         BigDecimal montantVente = cours.multiply(BigDecimal.valueOf(quantite));
 
-        // 4. Insertion dans l'historique des ventes
         try (PreparedStatement stmt = conn.prepareStatement(insertVenteSQL)) {
             stmt.setBigDecimal(1, BigDecimal.valueOf(quantite));
             stmt.setBigDecimal(2, cours);
@@ -239,7 +228,6 @@ public void vendreCrypto(int idCrypto, long idUtilisateur, double quantite) thro
             stmt.executeUpdate();
         }
 
-        // 5. Mise à jour du portefeuille crypto
         try (PreparedStatement stmt = conn.prepareStatement(updateCryptoUserSQL)) {
             stmt.setBigDecimal(1, BigDecimal.valueOf(quantite));
             stmt.setInt(2, idCrypto);
@@ -251,7 +239,6 @@ public void vendreCrypto(int idCrypto, long idUtilisateur, double quantite) thro
             }
         }
 
-        // 6. Crédit du solde utilisateur
         try (PreparedStatement stmt = conn.prepareStatement(updateFondSQL)) {
             stmt.setBigDecimal(1, montantVente);
             stmt.setLong(2, idUtilisateur);

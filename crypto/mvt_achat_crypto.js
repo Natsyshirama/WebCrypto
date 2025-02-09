@@ -2,7 +2,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import { getFirestore, collection, addDoc, doc, runTransaction, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
-// Configuration Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDwfQNfgWkGWpd0Fjib_VHRXuk75m51zds",
     authDomain: "cryptos-d4f6b.firebaseapp.com",
@@ -13,11 +12,9 @@ const firebaseConfig = {
     measurementId: "G-QHQLP3ZNDY"
 };
 
-// Initialisation Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Fonction pour obtenir le prochain ID d'achat
 async function getNextId(counterName) {
     const counterRef = doc(db, "counters", counterName);
     try {
@@ -39,12 +36,11 @@ async function getNextId(counterName) {
     }
 }
 
-// Attendre que le DOM soit chargé avant d'attacher l'événement
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('achat-form');
 
     form.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Empêcher l'envoi automatique du formulaire
+        event.preventDefault(); 
 
         try {
             const formData = new FormData(form);
@@ -57,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error("❌ Données invalides : Assurez-vous que la quantité est un nombre valide.");
             }
 
-            // Obtenir le cours de la cryptomonnaie sélectionnée
+          
             const selectedOption = form.querySelector(`option[value="${idCrypto}"]`);
             if (!selectedOption) {
                 throw new Error("❌ Cryptomonnaie sélectionnée introuvable.");
@@ -68,25 +64,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error("❌ Cours de la cryptomonnaie introuvable.");
             }
 
-            // Obtenir le prochain ID pour l'achat
             const idAchat = await getNextId("achats");
             console.log("📌 Nouvel ID d'achat généré:", idAchat);
 
-            // Préparer les données pour Firebase
             const achatData = {
                 Id_Cryptomonaie: idCrypto,
                 Id_utilisateur: idUtilisateur,
                 Id_achat: idAchat,
                 cours: coursActuel,
-                daty: serverTimestamp(), // Timestamp géré par Firebase
+                daty: serverTimestamp(), 
                 nb_crypto: nbCrypto
             };
 
-            // Insérer dans Firebase
+           
             await addDoc(collection(db, "mvt_achat_crypto"), achatData);
             console.log("✅ Achat enregistré avec succès!");
 
-            // Rediriger après insertion Firebase
+            
             window.location.href = "achatCrypto";
         } catch (error) {
             console.error("❌ Erreur lors de l'achat:", error);

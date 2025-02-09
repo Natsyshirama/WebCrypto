@@ -18,7 +18,6 @@ public class UserAnalise {
         this.solde = solde;
     }
 
-    // Getters et setters
     public long getUserId() { return userId; }
     public String getNom() { return nom; }
     public String getEmail() { return email; }

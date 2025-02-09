@@ -18,7 +18,6 @@ public class AnalyseCoursServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Récupération de la liste des cryptomonnaies depuis CryptoDAO
         CryptoDAO cryptoDAO = new CryptoDAO();
         List<Crypto> cryptos = cryptoDAO.getAllCryptos();
         request.setAttribute("cryptos", cryptos); // Envoi à la JSP
@@ -43,7 +42,6 @@ public class AnalyseCoursServlet extends HttpServlet {
             request.setAttribute("error", "Erreur lors du traitement des dates.");
         }
 
-        // Traitement des analyses si les données sont soumises
         if (typeAnalyse != null) {
             AnalyseDAO dao = new AnalyseDAO();
             try {
@@ -56,7 +54,6 @@ public class AnalyseCoursServlet extends HttpServlet {
             }
         }
 
-        // Redirection vers la JSP
         request.getRequestDispatcher("AnalyseCrypto.jsp").forward(request, response);
     }
 }

@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 public class InsertDepotServlet extends HttpServlet {
-http://localhost:8080/Crypto/fond/formInsertDepot
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     try {

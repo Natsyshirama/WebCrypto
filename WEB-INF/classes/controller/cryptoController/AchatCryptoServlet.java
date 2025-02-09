@@ -24,10 +24,8 @@ public class AchatCryptoServlet extends HttpServlet {
             CryptoDAO cryptoDAO = new CryptoDAO();
         DepotFondDAO dao = new DepotFondDAO();
 
-            // Liste des cryptos disponibles pour l'achat
             List<Crypto> cryptosDisponibles = cryptoDAO.getAllCryptos();
 
-            // Liste des cryptos déjà possédées par l'utilisateur
             Long idUtilisateur = SessionUtil.getUserIdConnected(request);
             List<Crypto> cryptosUser = cryptoDAO.getUserCryptos(idUtilisateur);
 
@@ -51,7 +49,6 @@ public class AchatCryptoServlet extends HttpServlet {
             int idCrypto = Integer.parseInt(request.getParameter("idCrypto"));
             double quantite = Double.parseDouble(request.getParameter("quantite"));
 
-            // Vérification de l'utilisateur connecté
             Long idUtilisateur = SessionUtil.getUserIdConnected(request);
             if (idUtilisateur == null) {
                 throw new Exception("Utilisateur non connecté.");
@@ -66,7 +63,6 @@ public class AchatCryptoServlet extends HttpServlet {
             request.setAttribute("message", "Erreur lors de l'achat : " + e.getMessage());
         }
 
-        // Recharger les données après achat
         doGet(request, response);
     }
 }

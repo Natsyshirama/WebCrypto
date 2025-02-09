@@ -24,21 +24,16 @@ public class VenteListeServlet extends HttpServlet {
         Timestamp dateFin = null;
 
         try {
-            // Format attendu : "yyyy-MM-dd"
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             if (dateDebutParam != null && !dateDebutParam.trim().isEmpty()) {
-                // Créer un Timestamp pour le début de la journée
                 dateDebut = new Timestamp(sdf.parse(dateDebutParam).getTime());
             }
             if (dateFinParam != null && !dateFinParam.trim().isEmpty()) {
-                // Créer un Timestamp pour la fin de la journée (23:59:59)
                 dateFin = new Timestamp(sdf.parse(dateFinParam).getTime());
-                // Ajouter 23:59:59 à la date fin
                 dateFin.setTime(dateFin.getTime() + (23 * 3600 + 59 * 60 + 59) * 1000);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            // En cas d'erreur de parsing, on laisse les valeurs null pour utiliser le mois en cours
         }
 
         VenteCryptoDAO dao = new VenteCryptoDAO();

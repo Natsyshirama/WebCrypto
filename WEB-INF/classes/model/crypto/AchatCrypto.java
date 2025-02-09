@@ -11,7 +11,6 @@ public class AchatCrypto {
     private int idCryptomonnaie;
     private long idUtilisateur;
 
-    // Getters et Setters
 
     public int getIdAchat() {
         return idAchat;
